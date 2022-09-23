@@ -1,9 +1,10 @@
 class sprite{
-    constructor(x, y, rad, type){
+    constructor(x, y, rot, rad, type){
         if(type==='player'){
             this.type  = type
             this.x   = x
             this.y   = y
+            this.rot = rot
             this.rad   = rad
             this.heal  = 100
             this.color = '#28537d'
@@ -20,9 +21,9 @@ class sprite{
         ctx.save()
         ctx.beginPath();
         ctx.translate(this.x, this.y);
-        ctx.rotate(1,5708);
         ctx.fillStyle='#f5dbdb'
-        ctx.fillRect(this.x /-2, this.y /-2, 10, 40);
+        ctx.rotate(this.rot);
+        ctx.fillRect(-5, 0, 10, 30);
         ctx.closePath();
         ctx.restore();
 

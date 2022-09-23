@@ -3,18 +3,22 @@ var leftPressed    = false
 var upPressed      = false
 var downPressed    = false
 var shooting       = false
+var mousePose      = {
+    x:0,
+    y:0
+}
 
 addEventListener('keydown', keyDownHandler, false)
 addEventListener('keyup', keyUpHandler, false)
+addEventListener('mousemove', (e)=>{
+        mousePose.x = e.clientX-((window.innerWidth-c.clientWidth)/2),
+        mousePose.y = e.clientY-10
+})
 
-var mouse_x = 0
-var mouse_y = 0
 
-c.addEventListener('mousemove', (event) => {
-    mouse_x = event.clientX-264
-    mouse_y = event.clientY-7
 
-});
+
+
 
 
 function keyDownHandler(e) {
@@ -55,9 +59,9 @@ function move_detector(obj) {
         obj.y--;}
     else if(downPressed){
     obj.y++;}
- 
-    // state.mouse_pos.m_a = Math.atan2(mouse_y-state.player_pos.y, mouse_x-state.player_pos.x)/Math.PI*18
 
+    let r = Math.atan2(mousePose.x-obj.x,  mousePose.y-obj.y)
+    obj.rot = -r
 }
 
 console.log('move is loaded');
