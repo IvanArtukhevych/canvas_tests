@@ -14,9 +14,13 @@ addEventListener('mousemove', (e)=>{
         mousePose.x = e.clientX-((window.innerWidth-c.clientWidth)/2),
         mousePose.y = e.clientY-10
 })
-
+addEventListener('click',()=>{
+    shooting = true
+}, false)
 
 function keyDownHandler(e) {
+
+
     if(e.keyCode == '68'){
         rightPressed = true
     }
@@ -45,7 +49,16 @@ function keyUpHandler(e) {
     }
 }
 
+
 function move_detector(obj) {
+    if(shooting){
+        const s = new shoot(
+            obj.x,
+            obj.y
+        )
+        shoots.push(s)
+        shooting = false
+    }
     if(rightPressed){
         obj.x+=obj.speed;}
     if(leftPressed){
@@ -57,6 +70,8 @@ function move_detector(obj) {
 
     let r = Math.atan2(mousePose.x-obj.x,  mousePose.y-obj.y)
     obj.rot = -r
+    rotate = r
+    // console.log(shoots);
 }
 
 console.log('move is loaded');

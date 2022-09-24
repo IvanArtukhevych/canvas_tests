@@ -24,7 +24,7 @@ class sprite{
         ctx.translate(this.x, this.y);
         ctx.fillStyle='#f5dbdb'
         ctx.rotate(this.rot);
-        ctx.fillRect(-5, 0, 10, 30);
+        ctx.fillRect(-10, 0, 20, 40);
         ctx.closePath();
         ctx.restore();
 
@@ -34,5 +34,29 @@ class sprite{
         ctx.fill();
         ctx.closePath();
     }
+}
+class shoot{
+    constructor(x, y){
+        this.x = x
+        this.y = y
+        this.x2 = Math.sin(rotate)
+        this.y2 = Math.cos(rotate)
+        this.rad = 10
+        this.color = '#ff5733'
+        this.velocity = 10
+    }
+    draw(){
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.rad, 0, Math.PI*2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.closePath();
+    }
+    update(){
+        this.x += this.x2*10
+        this.y += this.y2*10
+    }
+
+
 }
 console.log('sprite is loaded');

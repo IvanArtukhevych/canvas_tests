@@ -2,7 +2,7 @@ var player = new sprite(
     60,
     50,
     0,
-    10,
+    20,
     'player'
 )
 state.push(player)
@@ -16,6 +16,18 @@ function game(){
             obj.draw()
             move_detector(obj)
         })
+        shoots.map((s)=>{
+            s.draw()
+            s.update()
+            if(s.x>2000 || s.x<-2000 || s.y>2000 || s.y<0){
+                shoots.shift()
+            }
+
+        })
+        console.log(shoots);
+
+        
+        
     } catch (error) {
     }
 
