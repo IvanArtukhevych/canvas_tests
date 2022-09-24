@@ -8,6 +8,7 @@ class sprite{
             this.rad   = rad
             this.heal  = 100
             this.color = '#28537d'
+            this.speed = 2
         }else if(type==='villian'){
             this.type  = type
             this.x   = x

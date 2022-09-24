@@ -16,22 +16,17 @@ addEventListener('mousemove', (e)=>{
 })
 
 
-
-
-
-
-
 function keyDownHandler(e) {
     if(e.keyCode == '68'){
         rightPressed = true
     }
-    else if(e.keyCode == '65'){
+    if(e.keyCode == '65'){
         leftPressed = true
     }
-    else if(e.keyCode == '87'){
+    if(e.keyCode == '87'){
         upPressed = true
     }
-    else if(e.keyCode == '83'){
+    if(e.keyCode == '83'){
         downPressed = true
     }
 }
@@ -39,26 +34,26 @@ function keyUpHandler(e) {
     if(e.keyCode == '68'){
         rightPressed = false
     }
-    else if(e.keyCode == '65'){
+    if(e.keyCode == '65'){
         leftPressed = false
     }
-    else if(e.keyCode == '87'){
+    if(e.keyCode == '87'){
         upPressed = false
     }
-    else if(e.keyCode == '83'){
+    if(e.keyCode == '83'){
         downPressed = false
     }
 }
 
 function move_detector(obj) {
     if(rightPressed){
-        obj.x++;}
-    else if(leftPressed){
-        obj.x--;}
-    else if(upPressed){
-        obj.y--;}
-    else if(downPressed){
-    obj.y++;}
+        obj.x+=obj.speed;}
+    if(leftPressed){
+        obj.x-=obj.speed;}
+    if(upPressed){
+        obj.y-=obj.speed;}
+    if(downPressed){
+        obj.y+=obj.speed;}
 
     let r = Math.atan2(mousePose.x-obj.x,  mousePose.y-obj.y)
     obj.rot = -r
