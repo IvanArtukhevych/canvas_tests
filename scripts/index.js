@@ -8,8 +8,8 @@ var player = new sprite(
 function spawn_jew() {
     
     var villian = new jew(
-        600,
-        500,
+        Math.random() * (width-20 - 20) + 20,
+        Math.random() * (height-20 - 20) + 20,
         0,
         20,
         'villian'
