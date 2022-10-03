@@ -5,17 +5,28 @@ var player = new sprite(
     20,
     'player'
 )
+function spawn_jew() {
+    
+    var villian = new jew(
+        600,
+        500,
+        0,
+        20,
+        'villian'
+    )
+    jews.push(villian)
+}
 state.push(player)
+
 
 function game(){
     ctx.clearRect(0, 0, c.width, c.height)
     ctx.globalAlpha = 0.9
 
     try {
-        state.map((obj)=>{
-            obj.draw()
-            move_detector(obj)
-        })
+        if(jews.length==0){
+            spawn_jew()
+        }
         shoots.map((s)=>{
             s.draw()
             s.update()
@@ -23,11 +34,22 @@ function game(){
                 shoots.shift()
             }
 
-        })
-        console.log(shoots);
-
-        
-        
+        }) 
+        state.map((obj)=>{
+            obj.draw()
+            move_detector(obj)
+        })  
+        jews.map((obj)=>{
+            obj.draw()
+            shoots.forEach(s => {
+                if(Math.sqrt(((s.x - obj.x) ** 2) + ((s.y - obj.y) ** 2))-(s.rad+obj.rad)<=0){
+                    obj.heal-=10
+                    shoots.pop(s)                }
+            });
+            if(obj.heal==0){
+                jews.pop(obj)
+            }
+        }) 
     } catch (error) {
     }
 

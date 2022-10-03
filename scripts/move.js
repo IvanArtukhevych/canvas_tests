@@ -71,6 +71,12 @@ function move_detector(obj) {
     let r = Math.atan2(mousePose.x-obj.x,  mousePose.y-obj.y)
     obj.rot = -r
     rotate = r
+
+    if(obj.x > width-obj.rad)obj.x-=obj.speed
+    if(obj.x < 0+obj.rad)obj.x+=obj.speed
+    if(obj.y > height-obj.rad)obj.y-=obj.speed
+    if(obj.y < 0+obj.rad)obj.y+=obj.speed
+
     // console.log(shoots);
 }
 

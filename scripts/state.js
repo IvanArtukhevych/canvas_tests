@@ -4,6 +4,8 @@ const width = c.width = window.innerWidth;
 const height = c.height = window.innerHeight;
 
 var state = []
+var jews = []
 var shoots = []
 var rotate = 0
+
 console.log('state is loaded');

@@ -8,14 +8,7 @@ class sprite{
             this.rad   = rad
             this.heal  = 100
             this.color = '#28537d'
-            this.speed = 2
-        }else if(type==='villian'){
-            this.type  = type
-            this.x   = x
-            this.y   = y
-            this.rad   = rad
-            this.heal  = 100
-            this.color = '#7d2828'
+            this.speed = 10
         }
     }
     draw(){
@@ -29,6 +22,29 @@ class sprite{
         ctx.restore();
 
         ctx.beginPath();
+        ctx.fillText(this.heal, this.x-this.rad/2, this.y-this.rad-10)
+        ctx.arc(this.x, this.y, this.rad, 0, Math.PI*2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.closePath();
+    }
+}
+class jew{
+    constructor(x, y, rot, rad, type){
+        if(type==='villian'){
+            this.type  = type
+            this.x   = x
+            this.y   = y
+            this.rot = rot
+            this.rad   = rad
+            this.heal  = 100
+            this.color = '#CB4646'
+            this.speed = 10
+        }
+    }
+    draw(){
+        ctx.beginPath();
+        ctx.fillText(this.heal, this.x-this.rad/2, this.y-this.rad-10)
         ctx.arc(this.x, this.y, this.rad, 0, Math.PI*2);
         ctx.fillStyle = this.color;
         ctx.fill();
@@ -53,8 +69,8 @@ class shoot{
         ctx.closePath();
     }
     update(){
-        this.x += this.x2*10
-        this.y += this.y2*10
+        this.x += this.x2*20
+        this.y += this.y2*20
     }
 
 
